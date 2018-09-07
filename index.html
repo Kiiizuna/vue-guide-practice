@@ -21,7 +21,23 @@
 		<p v-if='seen'>可以看到我吗??</p>
 	</div>
 
+	<div id="app-4">
+		<ol>
+			<li v-for="todo in todos">
+				{{ todo.text }}
+			</li>
+		</ol>
+	</div>
 
+	<div id="app-5">
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage">逆转消息</button>
+	</div>
+
+	<div id="app-6">
+		<p>{{message}}</p>
+		<input v-model="message">
+	</div>
 <script>
 		var app = new Vue({
   		el: '#app',
@@ -44,6 +60,35 @@
 			}
 		})
 
+		var app4 = new Vue({
+			el:'#app-4',
+			data: {
+				todos: [
+					{ text: '学习javascript'},
+					{ text: '锻炼'},
+					{ text: '学习vue'}
+				]
+			}
+		})
+
+		var app5 = new Vue({
+			el:'#app-5',
+			data:{
+				message:'Hello there'
+			},
+			methods:{
+				reverseMessage: function() {
+					this.message = this.message.split('').reverse().join('')
+				}
+			}
+		})
+
+		var app6 = new Vue({
+			el:"#app-6",
+			data:{
+				message:"change yourself"
+			}
+		})
 	</script>
 </body>
 </html>
